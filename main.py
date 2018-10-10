@@ -35,9 +35,6 @@ def newpost():
     if request.method == 'POST':
         entry_title = request.form['entry_title']
         entry_body = request.form['entry_body']
-        new_entry = Blog(entry_title, entry_body, True)
-        db.session.add(new_entry)
-        db.session.commit()
 
         title_error = ''
         body_error = ''
@@ -46,7 +43,7 @@ def newpost():
             if not entry_title:
                 title_error = "Please include a title."
             if not entry_body:
-                body_error = "Please include some text in your post."
+                body_error = "Please write your post here."
 
             return render_template('newpost.html',
             entry_title=entry_title,
@@ -54,7 +51,11 @@ def newpost():
             title_error=title_error,
             body_error=body_error)
         else:
-            return redirect('/')
+            new_entry = Blog(entry_title, entry_body, True)
+            db.session.add(new_entry)
+            db.session.commit()
+
+            return redirect('/entry?q=' + str(new_entry.id))
 
     #if request.method == 'GET':
     return render_template('newpost.html')
@@ -69,6 +70,16 @@ def index():
     entries=entries)
 
     #return '<h1> display all blog posts here </h1>'
+
+@app.route('/entry')
+def individual_entry():
+
+    entry_id = request.args.get('q')
+    entry = Blog.query.filter_by(id=entry_id).first()
+
+    return render_template('individual_entry.html',
+    title=entry.title,
+    entry=entry)
 
 @app.route('/delete-entry', methods=['POST'])
 def delete_entry():
