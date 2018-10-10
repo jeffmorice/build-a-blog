@@ -39,10 +39,20 @@ def newpost():
         db.session.add(new_entry)
         db.session.commit()
 
+        title_error = ''
+        body_error = ''
+
         if not entry_title or not entry_body:
+            if not entry_title:
+                title_error = "Please include a title."
+            if not entry_body:
+                body_error = "Please include some text in your post."
+
             return render_template('newpost.html',
             entry_title=entry_title,
-            entry_body=entry_body)
+            entry_body=entry_body,
+            title_error=title_error,
+            body_error=body_error)
         else:
             return redirect('/')
 
