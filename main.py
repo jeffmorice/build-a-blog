@@ -1,6 +1,7 @@
 # import relevant modules
 from flask import Flask, request, redirect, render_template
 from flask_sqlalchemy import SQLAlchemy
+from sqlalchemy import desc
 
 # define your app
 app = Flask(__name__)
@@ -63,8 +64,11 @@ def newpost():
 
 @app.route('/')
 def index():
+    # assigns a list of objects of class 'Blog' to 'entries' variable
+        # took way to long to figure out. Apparently you have to order a select
+        # before you filter it? No idea. Could swear I tried that.
+    entries = Blog.query.order_by(desc(Blog.id)).filter_by(visible=True).all()
 
-    entries = Blog.query.filter_by(visible=True).all()
     return render_template('blog.html',
     title="Your Blog Name Here!",
     entries=entries)
