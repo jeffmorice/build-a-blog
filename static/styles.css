@@ -64,6 +64,15 @@ p {
   background-color: #fffac2;
 }
 
+input[type=text], textarea {
+  width: 100%;
+  background-color: #fffac2;
+}
+
+a, h3, p, input[type="text"], textarea, label {
+  font-family: "Verdana";
+}
+
 .error {
   color: red;
 }
