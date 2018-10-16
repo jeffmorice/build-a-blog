@@ -22,7 +22,7 @@ article {
   box-sizing: border-box;
 }
 
-a:link {
+a:link, label {
     color: #7d2a40;
     text-decoration: none;
 }
@@ -66,6 +66,15 @@ p {
 
 input[type=text], textarea {
   width: 100%;
+  background-color: #fffac2;
+  padding-top: 15px;
+  padding-left: 15px;
+  padding-right: 15px;
+  padding-bottom: 15px;
+  box-sizing: border-box;
+}
+
+input[type=submit] {
   background-color: #fffac2;
 }
 

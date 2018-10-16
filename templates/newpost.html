@@ -4,18 +4,18 @@
     <article>
         <div>
           <form method='POST' action="/newpost">
-            <label> New Post Title
+            <label> <h3> New Post Title </h3>
               <span class='error' > {{title_error}} </span>
-              <br>
               <input name="entry_title" type="text" value="{{ entry_title }}" />
             </label>
             <br>
             <br>
-            <label> New Post Body
+            <br>
+            <label> <h3> New Post Body </h3>
               <span class='error'> {{body_error}} </span>
-              <br>
               <textarea name="entry_body" rows="10" cols="30" value="{{ entry_body }}" ></textarea>
             </label>
+            <br>
             <br>
             <input type="submit" value="Submit Post" />
           </form>
