@@ -48,7 +48,6 @@ a:active {
 h3 {
   margin-top: 0px;
   margin-bottom: 15px;
-  color: #7d2a40;
 }
 
 p {
@@ -86,6 +85,10 @@ a, h3, p, input[type="text"], textarea, label {
 
 .error {
   color: red;
+}
+
+.color1 {
+  color: #7d2a40;
 }
 
 #topbar {
